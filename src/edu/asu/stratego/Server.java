@@ -23,6 +23,7 @@ public class Server {
 	public static void main(String[] args) throws IOException {
 
 		String hostAddress = InetAddress.getLocalHost().getHostAddress();
+
 		ServerSocket listener = null;
 
 		try {
@@ -69,7 +70,7 @@ public class Server {
 					}
 
 					if (isPlayerOneReconnecting) {
-						// Get game id from client
+						/* Get game id from client. */
 						int gameId = 0;
 						try {
 							gameId = (Integer) fromPlayerTwo.readObject();
@@ -79,8 +80,10 @@ public class Server {
 
 						boolean reconnectSucess = reconnectPlayerToSession(gameId, playerTwo);
 
-						// If reconnect was unsucessful discard their information anyways
-						// The client will make a new non reconnect request
+						/*
+						 * If reconnect was unsuccessful discard their information anyways. The client
+						 * will make a new non reconnect request.
+						 */
 
 					}
 				}
@@ -95,12 +98,7 @@ public class Server {
 				thread.setDaemon(true);
 				thread.start();
 			}
-
-		}
-
-		finally
-
-		{
+		} finally {
 			if (listener != null) {
 				listener.close();
 			}
@@ -109,19 +107,24 @@ public class Server {
 
 	private static boolean reconnectPlayerToSession(int gameId, Socket socket) {
 		for (Session session : activeSessions) {
-			if (session.getId() == gameId) {
-				session.sessionCommunicaton.add(socket);
-				return true;
+			if (session.getId() != gameId) {
+				continue;
 			}
+
+			session.sessionCommunicaton.add(socket);
+			return true;
 		}
+
 		return false;
 	}
 
 	public static void finishSession(int gameId) {
 		for (Session session : activeSessions) {
-			if (session.getId() == gameId) {
-				activeSessions.remove(session);
+			if (session.getId() != gameId) {
+				continue;
 			}
+
+			activeSessions.remove(session);
 		}
 	}
 }

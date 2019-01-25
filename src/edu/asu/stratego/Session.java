@@ -5,9 +5,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Session {
 	private static int ID = 0;
+	
 	private Socket player1;
+	
 	private Socket player2;
+	
 	private int id;
+	
 	public LinkedBlockingQueue<Socket> sessionCommunicaton;
 
 	public Session(Socket player1, Socket player2) {

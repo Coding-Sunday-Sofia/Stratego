@@ -7,69 +7,85 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.asu.stratego.game.ServerGameManager;
 
 /**
- * The Stratego Server creates a socket and listens for connections from every
+ * The Stratego server creates a socket and listens for connections from every
  * two players to form a game session. Each session is handled by a thread,
  * ServerGameManager, that communicates with the two players and determines the
  * status of the game.
+ * 
+ * @author Curtis Sapp
  */
 public class Server {
 
-	private static ArrayList<Session> activeSessions = new ArrayList<Session>();
+	/** Keep track of all active game sessions. */
+	private static List<Session> sessions = new ArrayList<Session>();
 
+	/** Server listening port. */
+	private static int port = 4212;
+
+	/**
+	 * Server application single entry point.
+	 * 
+	 * @param args Command line arguments.
+	 * 
+	 * @throws IOException It is done only to escape try-catch segments.
+	 */
 	public static void main(String[] args) throws IOException {
+		// TODO Get server port from the command line interface.
 
-		String hostAddress = InetAddress.getLocalHost().getHostAddress();
-
-		ServerSocket listener = null;
+		ServerSocket server = null;
 
 		try {
-			listener = new ServerSocket(4212);
-			System.out.println("Server started @ " + hostAddress);
-			System.out.println("Waiting for incoming connections...\n");
+			server = new ServerSocket(port);
+
+			System.out.println("Server started @ " + InetAddress.getLocalHost().getHostAddress() + " ...");
+			System.out.println("Waiting for incoming connections ...\n");
 
 			while (true) {
-				boolean isPlayerOneReconnecting = true;
 				Socket playerOne = null;
-				while (isPlayerOneReconnecting) {
-					playerOne = listener.accept();
-					System.out.println("Session " + Session.getNextID() + ": Player 1 has joined the session");
 
-					ObjectOutputStream toPlayerOne = new ObjectOutputStream(playerOne.getOutputStream());
+				boolean isPlayerOneReconnecting = true;
+				do {
+					playerOne = server.accept();
+					System.out.println("Session " + Session.getCurrnetID() + ": Player 1 has joined the session ...");
+
 					ObjectInputStream fromPlayerOne = new ObjectInputStream(playerOne.getInputStream());
 
 					try {
 						isPlayerOneReconnecting = (Boolean) fromPlayerOne.readObject();
+						if (isPlayerOneReconnecting == false) {
+							break;
+						}
 					} catch (ClassNotFoundException e) {
 						e.printStackTrace();
 					}
 
-					if (isPlayerOneReconnecting) {
-						// Get game id from client
-						int gameId = fromPlayerOne.readInt();
+					/* Get game id from client. */
+					int gameId = fromPlayerOne.readInt();
+					// TODO It is not clear why game id is received at all.
+				} while (true);
 
-					}
-				}
-
-				boolean isPlayerTwoReconnecting = true;
 				Socket playerTwo = null;
-				while (isPlayerTwoReconnecting) {
-					playerTwo = listener.accept();
-					System.out.println("Session " + Session.getNextID() + ": Player 2 has joined the session");
+				do {
+					playerTwo = server.accept();
+					System.out.println("Session " + Session.getCurrnetID() + ": Player 2 has joined the session ...");
 
-					ObjectOutputStream toPlayerTwo = new ObjectOutputStream(playerTwo.getOutputStream());
 					ObjectInputStream fromPlayerTwo = new ObjectInputStream(playerTwo.getInputStream());
 
 					try {
-						isPlayerTwoReconnecting = (Boolean) fromPlayerTwo.readObject();
+						boolean isPlayerTwoReconnecting = (Boolean) fromPlayerTwo.readObject();
+						if (isPlayerTwoReconnecting == false) {
+							break;
+						}
 					} catch (ClassNotFoundException e) {
 						e.printStackTrace();
 					}
 
-					if (isPlayerOneReconnecting) {
+					if (isPlayerOneReconnecting == true) {
 						/* Get game id from client. */
 						int gameId = 0;
 						try {
@@ -78,20 +94,19 @@ public class Server {
 							e.printStackTrace();
 						}
 
-						boolean reconnectSucess = reconnectPlayerToSession(gameId, playerTwo);
+						reconnectPlayerToSession(gameId, playerTwo);
 
 						/*
 						 * If reconnect was unsuccessful discard their information anyways. The client
 						 * will make a new non reconnect request.
 						 */
-
 					}
-				}
+				} while (true);
 
-				System.out.println("Session built");
+				System.out.println("Session built ...");
 
 				Session session = new Session(playerOne, playerTwo);
-				activeSessions.add(session);
+				sessions.add(session);
 
 				Thread thread = new Thread(new ServerGameManager(session, false));
 
@@ -99,32 +114,45 @@ public class Server {
 				thread.start();
 			}
 		} finally {
-			if (listener != null) {
-				listener.close();
+			if (server != null) {
+				server.close();
 			}
 		}
 	}
 
+	/**
+	 * Reconnect player to its session.
+	 * 
+	 * @param gameId Game identifier.
+	 * @param socket TCP/IP sockect of the player.
+	 * 
+	 * @return True if the reconnection is successful, false otherwise.
+	 */
 	private static boolean reconnectPlayerToSession(int gameId, Socket socket) {
-		for (Session session : activeSessions) {
+		for (Session session : sessions) {
 			if (session.getId() != gameId) {
 				continue;
 			}
 
-			session.sessionCommunicaton.add(socket);
+			session.add(socket);
 			return true;
 		}
 
 		return false;
 	}
 
+	/**
+	 * Game session finalization.
+	 * 
+	 * @param gameId Game identifier.
+	 */
 	public static void finishSession(int gameId) {
-		for (Session session : activeSessions) {
+		for (Session session : sessions) {
 			if (session.getId() != gameId) {
 				continue;
 			}
 
-			activeSessions.remove(session);
+			sessions.remove(session);
 		}
 	}
 }

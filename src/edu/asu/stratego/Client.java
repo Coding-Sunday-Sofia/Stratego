@@ -9,6 +9,11 @@ import edu.asu.stratego.game.ClientGameManager;
 import edu.asu.stratego.game.Game;
 import edu.asu.stratego.gui.ClientStage;
 
+/**
+ * Client desktop application entry point.
+ * 
+ * @author Curtis Sapp
+ */
 public class Client extends Application {
 
 	/**
@@ -18,13 +23,13 @@ public class Client extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		// (MODEL) Start a new game.
+		/* (MODEL) Start a new game. */
 		new Game();
 
-		// (VIEW) Display client GUI on the JavaFX Application thread.
+		/* (VIEW) Display client GUI on the JavaFX Application thread. */
 		ClientStage client = new ClientStage();
 
-		// (CONTROLLER) Control the game on a separate thread.
+		/* (CONTROLLER) Control the game on a separate thread. */
 		Thread manager = new Thread(new ClientGameManager(client));
 		manager.setDaemon(true);
 		manager.start();

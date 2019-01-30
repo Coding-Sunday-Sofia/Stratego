@@ -93,6 +93,15 @@ public class Session {
 	}
 
 	/**
+	 * Communication sockets reference getter.
+	 * 
+	 * @return Queue with socket objects.
+	 */
+	public Queue<Socket> getSockets() {
+		return sockets;
+	}
+
+	/**
 	 * Keep TCP/IP socket reference into internal queue.
 	 * 
 	 * @param socket TCP/IP client socket.

@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import edu.asu.stratego.Server;
@@ -40,7 +41,7 @@ public class ServerGameManager implements Runnable {
 	private boolean isP1Connected = true;
 	private boolean isP2Connected = true;
 
-	private LinkedBlockingQueue<Socket> sessionCommunicaton;
+	private Queue<Socket> sockets;
 
 	/**
 	 * Creates a new instance of ServerGameManager.
@@ -57,7 +58,7 @@ public class ServerGameManager implements Runnable {
 		this.socketTwo = session.getPlayer2();
 		this.gameId = session.getId();
 
-		this.sessionCommunicaton = session.sessionCommunicaton;
+		this.sockets = session.getSockets();
 
 		if (Math.random() < 0.5)
 			this.turn = PieceColor.RED;
@@ -248,25 +249,17 @@ public class ServerGameManager implements Runnable {
 		if (getPlayerOneColor() == colorToWaitFor) {
 			// Waiting for player one to reconnect
 			Socket reconnectedPlayer = null;
-			while (!sessionCommunicaton.isEmpty()) {
-				try {
-					reconnectedPlayer = sessionCommunicaton.take();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			while (!sockets.isEmpty()) {
+				reconnectedPlayer = sockets.element();
+				sockets.remove();
 			}
 			socketOne = reconnectedPlayer;
 		} else {
 			// Waiting for player two to reconnect
 			Socket reconnectedPlayer = null;
-			while (!sessionCommunicaton.isEmpty()) {
-				try {
-					reconnectedPlayer = sessionCommunicaton.take();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+			while (!sockets.isEmpty()) {
+				reconnectedPlayer = sockets.element();
+				sockets.remove();
 			}
 			socketTwo = reconnectedPlayer;
 		}

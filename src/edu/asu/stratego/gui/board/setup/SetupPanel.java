@@ -1,5 +1,9 @@
 package edu.asu.stratego.gui.board.setup;
 
+import edu.asu.stratego.game.ClientGameManager;
+import edu.asu.stratego.game.Game;
+import edu.asu.stratego.gui.ClientStage;
+import edu.asu.stratego.media.ImageConstants;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,11 +18,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import edu.asu.stratego.game.ClientGameManager;
-import edu.asu.stratego.game.Game;
-import edu.asu.stratego.gui.ClientStage;
-import edu.asu.stratego.media.ImageConstants;
-import edu.asu.stratego.media.PlaySound;
 
 /**
  * The panel that is shown during the SETTING_UP phase of a Stratego game.

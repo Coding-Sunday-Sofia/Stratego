@@ -1,10 +1,13 @@
 package edu.asu.stratego.game;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.io.*;
-import java.util.*;
 
 import edu.asu.stratego.gui.ConnectionScene;
 

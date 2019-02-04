@@ -2,10 +2,9 @@ package edu.asu.stratego.util;
 
 import java.util.HashMap;
 
+import edu.asu.stratego.media.ImageConstants;
 import javafx.scene.image.Image;
 import javafx.scene.media.AudioClip;
-import edu.asu.stratego.media.ImageConstants;
-import edu.asu.stratego.media.SoundConstants;
 
 public class HashTables {
 	// Piece Image Map (String -> Image).

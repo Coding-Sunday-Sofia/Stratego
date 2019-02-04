@@ -4,8 +4,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
-import edu.asu.stratego.gui.board.BoardSquareType;
-
 /**
  * JavaFX StackPane to graphically represent the individual squares of the
  * Stratego board.

@@ -1,21 +1,21 @@
 package edu.asu.stratego.test;
 
-import edu.asu.stratego.game.ClientGameManager;
-import edu.asu.stratego.game.ClientSocket;
-import edu.asu.stratego.game.ServerGameManager;
-import edu.asu.stratego.game.Game;
-import edu.asu.stratego.game.Player;
-import edu.asu.stratego.game.PieceColor;
-import org.junit.Test;
-import java.lang.reflect.InvocationTargetException;
+import static junit.framework.TestCase.assertEquals;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static junit.framework.TestCase.assertEquals;
+import org.junit.Test;
 
-import java.lang.reflect.Method;
+import edu.asu.stratego.game.ClientGameManager;
+import edu.asu.stratego.game.ClientSocket;
+import edu.asu.stratego.game.Game;
+import edu.asu.stratego.game.PieceColor;
+import edu.asu.stratego.game.Player;
+import edu.asu.stratego.game.ServerGameManager;
 
 public class ClientGameManagerTest {
 	ClientGameManager client;

@@ -1,9 +1,15 @@
 package edu.asu.stratego.gui;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.UnknownHostException;
-import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
 
+import edu.asu.stratego.game.ClientSocket;
+import edu.asu.stratego.game.Game;
 import javafx.application.Platform;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -14,9 +20,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-
-import edu.asu.stratego.game.ClientSocket;
-import edu.asu.stratego.game.Game;
 
 /**
  * Wrapper class for a JavaFX scene. Contains a scene UI and its associated
@@ -58,7 +61,7 @@ public class ConnectionScene {
 	ConnectionScene() throws IOException {
 
 		// reads from saved ips file and stores in ArrayList
-		serverFile = new File("Servers.sav");
+		serverFile = new File("./data/Servers.sav");
 		serverFile.createNewFile();
 		BufferedReader stdin = new BufferedReader(new InputStreamReader(new FileInputStream(serverFile)));
 		serverList = new ArrayList<String>();
@@ -71,7 +74,7 @@ public class ConnectionScene {
 		stdin.close();
 
 		// reads from saved players file and stores in ArrayList
-		playerFile = new File("Players.sav");
+		playerFile = new File("./data/Players.sav");
 		playerFile.createNewFile();
 		BufferedReader stdin2 = new BufferedReader(new InputStreamReader(new FileInputStream(playerFile)));
 		playerList = new ArrayList<String>();

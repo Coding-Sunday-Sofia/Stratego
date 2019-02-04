@@ -1,15 +1,21 @@
 package edu.asu.stratego.test;
 
-import edu.asu.stratego.Session;
-import edu.asu.stratego.game.*;
-import edu.asu.stratego.game.board.ServerSquare;
+import static org.junit.Assert.assertEquals;
+
+import java.awt.Point;
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.*;
-import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
+import edu.asu.stratego.Session;
+import edu.asu.stratego.game.Game;
+import edu.asu.stratego.game.GameStatus;
+import edu.asu.stratego.game.Piece;
+import edu.asu.stratego.game.PieceColor;
+import edu.asu.stratego.game.PieceType;
+import edu.asu.stratego.game.ServerGameManager;
+import edu.asu.stratego.game.board.ServerSquare;
 
 public class ServerGameManagerTest {
 

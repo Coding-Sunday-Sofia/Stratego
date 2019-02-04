@@ -2,6 +2,11 @@ package edu.asu.stratego.gui.board.setup;
 
 import java.util.HashMap;
 
+import edu.asu.stratego.game.Game;
+import edu.asu.stratego.game.PieceType;
+import edu.asu.stratego.gui.ClientStage;
+import edu.asu.stratego.util.HashTables;
+import edu.asu.stratego.util.MutableBoolean;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
@@ -11,12 +16,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import edu.asu.stratego.game.Game;
-import edu.asu.stratego.game.PieceType;
-import edu.asu.stratego.gui.ClientStage;
-
-import edu.asu.stratego.util.HashTables;
-import edu.asu.stratego.util.MutableBoolean;
 
 /**
  * Pieces in the SetupPanel that the player can select when setting up the game.

@@ -1,8 +1,7 @@
 package edu.asu.stratego.media;
 
-import javafx.scene.media.AudioClip;
-
 import edu.asu.stratego.util.HashTables;
+import javafx.scene.media.AudioClip;
 
 public class PlaySound {
 	public static void playMusic(String file, int Volume) {

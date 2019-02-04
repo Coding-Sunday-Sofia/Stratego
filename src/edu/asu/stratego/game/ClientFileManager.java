@@ -5,11 +5,19 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+/**
+ * Helper class for file system manipulation.
+ * 
+ * @author Curtis Sapp
+ */
 public class ClientFileManager {
-	private final static String GAME_INFO_PATH = "gameinfo.txt";
+	//TODO It will be changed with Android Shared Praferences.
+	
+	/** Full file path and name for the game information. */
+	private final static String GAME_INFO_FILE = "./data/gameinfo.txt";
 
 	public static String getLastGameIp() {
-		File file = new File(GAME_INFO_PATH);
+		File file = new File(GAME_INFO_FILE);
 		Scanner scanner;
 		try {
 			scanner = new Scanner(file);
@@ -25,7 +33,7 @@ public class ClientFileManager {
 	}
 
 	public static int getLastPort() {
-		File file = new File(GAME_INFO_PATH);
+		File file = new File(GAME_INFO_FILE);
 		Scanner scanner;
 		try {
 			scanner = new Scanner(file);
@@ -41,7 +49,7 @@ public class ClientFileManager {
 	}
 
 	public static int getLastGameId() {
-		File file = new File(GAME_INFO_PATH);
+		File file = new File(GAME_INFO_FILE);
 		Scanner scanner;
 		try {
 			scanner = new Scanner(file);
@@ -74,7 +82,7 @@ public class ClientFileManager {
 	}
 
 	public static boolean doesGameInfoExist() {
-		File file = new File(GAME_INFO_PATH);
+		File file = new File(GAME_INFO_FILE);
 		try {
 			return file.exists();
 		} catch (Exception e) {

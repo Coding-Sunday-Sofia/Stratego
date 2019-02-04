@@ -1,6 +1,5 @@
 package edu.asu.stratego.game;
 
-//hello
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -11,7 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-import edu.asu.stratego.Session;
 import edu.asu.stratego.game.board.ClientSquare;
 import edu.asu.stratego.gui.BoardScene;
 import edu.asu.stratego.gui.ClientStage;
@@ -34,6 +32,8 @@ import javafx.util.Duration;
 
 /**
  * Task to handle the Stratego game on the client-side.
+ * 
+ * @author Curtis Sapp
  */
 public class ClientGameManager implements Runnable {
 
@@ -71,7 +71,6 @@ public class ClientGameManager implements Runnable {
 			sendIsReconnectData();
 			playGame(true);
 		} else {
-
 			connectToServer();
 			sendIsReconnectData();
 			waitForOpponent();
@@ -117,7 +116,6 @@ public class ClientGameManager implements Runnable {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-
 	}
 
 	private boolean isReconnectingFromPreviousGame() {
@@ -237,7 +235,6 @@ public class ClientGameManager implements Runnable {
 
 	private void playGame(boolean wasReconnect) {
 		if (!wasReconnect) {
-
 			// Remove setup panel
 			Platform.runLater(() -> {
 				BoardScene.getRootPane().getChildren().remove(BoardScene.getSetupPanel());
@@ -524,7 +521,7 @@ public class ClientGameManager implements Runnable {
 				win = true;
 			}
 
-			File file = new File("Players.sav");
+			File file = new File("./data/Players.sav");
 			file.createNewFile();
 			BufferedReader stdin = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 			ArrayList<String> list = new ArrayList<String>();

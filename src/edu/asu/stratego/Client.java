@@ -1,13 +1,12 @@
 package edu.asu.stratego;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
-
 import java.io.IOException;
 
 import edu.asu.stratego.game.ClientGameManager;
 import edu.asu.stratego.game.Game;
 import edu.asu.stratego.gui.ClientStage;
+import javafx.application.Application;
+import javafx.stage.Stage;
 
 /**
  * Client desktop application entry point.

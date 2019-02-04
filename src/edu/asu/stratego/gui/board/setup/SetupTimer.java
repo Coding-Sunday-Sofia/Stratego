@@ -1,5 +1,7 @@
 package edu.asu.stratego.gui.board.setup;
 
+import edu.asu.stratego.gui.ClientStage;
+import edu.asu.stratego.gui.board.BoardSquareEventPane;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -12,9 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
-
-import edu.asu.stratego.gui.ClientStage;
-import edu.asu.stratego.gui.board.BoardSquareEventPane;
 
 /**
  * A setup timer. This timer counts down from a start time.

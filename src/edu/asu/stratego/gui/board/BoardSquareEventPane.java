@@ -4,13 +4,6 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import javafx.event.EventHandler;
-import javafx.scene.Node;
-import javafx.scene.effect.Glow;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-
 import edu.asu.stratego.game.ClientGameManager;
 import edu.asu.stratego.game.Game;
 import edu.asu.stratego.game.GameStatus;
@@ -23,6 +16,12 @@ import edu.asu.stratego.gui.board.setup.SetupPanel;
 import edu.asu.stratego.gui.board.setup.SetupPieces;
 import edu.asu.stratego.media.ImageConstants;
 import edu.asu.stratego.util.HashTables;
+import javafx.event.EventHandler;
+import javafx.scene.Node;
+import javafx.scene.effect.Glow;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 /**
  * A single square within the BoardEventPane.

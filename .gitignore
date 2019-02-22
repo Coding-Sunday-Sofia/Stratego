@@ -1,3 +1,6 @@
+# Mac OS X
+.DS_Store
+
 # Game saving filse.
 *.sav
 

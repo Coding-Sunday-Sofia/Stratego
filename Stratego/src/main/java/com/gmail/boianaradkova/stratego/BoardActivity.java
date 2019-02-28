@@ -14,7 +14,7 @@ public class BoardActivity extends AppCompatActivity {
 	/**
 	 * The game has a board.
 	 */
-	private Board board = new Board();
+	//private Board board = new Board();
 
 	/**
 	 * {@inheritDoc}

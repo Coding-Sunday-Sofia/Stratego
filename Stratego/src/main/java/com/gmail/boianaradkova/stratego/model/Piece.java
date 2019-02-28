@@ -23,7 +23,7 @@ final class Piece {
 		SAPPER,
 		SCOUT,
 		SPY,
-		FLAG;
+		FLAG,
 	}
 
 	/**
@@ -31,7 +31,7 @@ final class Piece {
 	 */
 	enum Color {
 		RED,
-		BLUE;
+		BLUE,
 	}
 
 	/**

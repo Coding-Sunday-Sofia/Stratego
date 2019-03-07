@@ -3,12 +3,108 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:layout_column="10"
-  android:layout_row="10"
+            android:columnCount="10"
   tools:context=".BoardActivity">
 
-    <ImageView
-        android:id="@+id/cell00"
-        android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell00" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell01" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell02" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell03" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell04" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell05" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell06" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell07" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell08" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell09" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell10" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell11" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell12" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell13" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell14" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell15" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell16" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell17" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell18" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell19" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell20" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell21" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell22" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell23" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell24" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell25" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell26" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell27" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell28" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell29" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell30" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell31" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell32" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell33" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell34" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell35" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell36" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell37" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell38" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell39" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell40" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell41" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell42" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake11"/>
+    <ImageView android:id="@+id/cell43" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake12"/>
+    <ImageView android:id="@+id/cell44" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell45" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell46" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake21"/>
+    <ImageView android:id="@+id/cell47" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake22"/>
+    <ImageView android:id="@+id/cell48" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell49" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell50" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell51" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell52" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake13"/>
+    <ImageView android:id="@+id/cell53" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake14"/>
+    <ImageView android:id="@+id/cell54" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell55" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell56" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake23"/>
+    <ImageView android:id="@+id/cell57" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/lake24"/>
+    <ImageView android:id="@+id/cell58" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell59" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass2"/>
+    <ImageView android:id="@+id/cell60" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell61" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell62" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell63" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell64" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell65" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell66" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell67" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell68" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell69" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell70" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell71" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell72" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell73" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell74" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell75" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell76" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell77" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell78" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell79" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell80" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell81" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell82" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell83" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell84" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell85" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell86" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell87" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell88" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell89" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell90" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell91" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell92" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell93" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell94" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell95" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell96" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell97" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell98" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
+    <ImageView android:id="@+id/cell99" android:scaleType="fitXY" android:layout_width="40dp" android:layout_height="20dp" android:src="@drawable/grass1"/>
 
 </GridLayout>

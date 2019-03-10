@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.gmail.boianaradkova.stratego.model.Board;
+
 /**
  * Game board screen.
  *
@@ -14,16 +16,16 @@ import android.widget.Toast;
 public class BoardActivity extends AppCompatActivity {
 	/** Drawable resources needed for an empty battlefield. */
 	private final int EMPTY_FIELD_DRAWABLES[][] = {
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake11, R.drawable.lake13, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake12, R.drawable.lake14, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake21, R.drawable.lake23, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake22, R.drawable.lake24, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
-					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake11, R.drawable.lake13, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake12, R.drawable.lake14, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake21, R.drawable.lake23, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake22, R.drawable.lake24, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
+		{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
 	};
 
 	/** Keep references to image view controls. */
@@ -35,21 +37,23 @@ public class BoardActivity extends AppCompatActivity {
 		@Override
 		public void onClick(View view) {
 			//TODO Find way to do unit testing.
-			for (int i = 0; i < cells.length; i++) {
+			loops: for (int i = 0; i < cells.length; i++) {
 				for (int j = 0; j < cells[i].length; j++) {
 					/* If the view reference does not match do nothing. */
 					if(view != cells[i][j]) {
 						continue;
 					}
 
-					Toast.makeText(BoardActivity.this, "Cell"+i+""+j,	Toast.LENGTH_SHORT).show();
+					//Toast.makeText(BoardActivity.this, "Cell"+i+""+j,	Toast.LENGTH_SHORT).show();
+					board.click(i, j);
+					break loops;
 				}
 			}
 		}
 	};
 
 	/** The game has a board. */
-	//private Board board = new Board();
+	private Board board = new Board();
 
 	/** {@inheritDoc} */
 	@Override

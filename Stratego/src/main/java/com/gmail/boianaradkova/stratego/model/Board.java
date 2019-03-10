@@ -11,20 +11,25 @@ import java.util.List;
  * @author Boyana Kantarska
  */
 public final class Board {
-	/**
-	 * All pieces available on the board are stored as Java objects in a single collection.
-	 */
+	/** State of the board. */
+	enum State {
+		EMPTY,
+		SETUP,
+		PLAY,
+		FINISH,
+	};
+
+	/** All pieces available on the board are stored as Java objects in a single collection. */
 	private static final List<Piece> PIECES = new ArrayList<Piece>();
 
-	/**
-	 * Just a reference ot the real object.
-	 */
+	/** Just a reference ot the real object. */
 	private static final Piece BLUE_FLAG;
 
-	/**
-	 * Just a reference ot the real object.
-	 */
+	/** Just a reference ot the real object. */
 	private static final Piece RED_FLAG;
+
+	/** Keep track of the board state. */
+	private State state = State.EMPTY;
 
 	/**
 	 * The board consists of cells. Rectangular cardboard playing board imprinted with a 10x10 grid
@@ -43,14 +48,10 @@ public final class Board {
 		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
 	};
 
-	/**
-	 * Each player moves one piece per turn.
-	 */
+	/** Each player moves one piece per turn. */
 	private int turn = 0;
 
-	/*
-	 * Initialization of the the static fields.
-	 */
+	/* Initialization of the the static fields. */
 	static {
 		/*
 		 * Each player controls 40 pieces representing individual officer ranks in an army.
@@ -138,9 +139,7 @@ public final class Board {
 			return false;
 		}
 
-		/*
-		 * Capturing is checked by player flag.
-		 */
+		/* Capturing is checked by player flag. */
 		if(flag.rank() != Piece.Rank.FLAG) {
 			if(flag.color() == Piece.Color.RED) {
 				flag = RED_FLAG;
@@ -163,9 +162,7 @@ public final class Board {
 	 * @return True if the player has some valid moves, false otherwise.
 	 */
 	private boolean hasValidMove(Piece.Color player) {
-		/*
-		 * If the player does not exist he could nod move.
-		 */
+		/* If the player does not exist he could nod move. */
 		if(player == null) {
 			return false;
 		}
@@ -196,15 +193,43 @@ public final class Board {
 	 * @param piece Piece reference for deployment.
 	 * @param x Column index.
 	 * @param y Row index.
+	 *
+	 * @return True if the placement is successful, false otherwise.
 	 */
-	public void place(Piece piece, int x, int y) {
+	public boolean place(Piece piece, int x, int y) {
 		if (true) throw new RuntimeException("Unit test needed!");
+
+		return false;
 	}
 
 	/**
 	 * Do a single move during playing phase.
+	 *
+	 * @param piece Piece to move.
+	 * @param startX Start x position.
+	 * @param startY Start y position.
+	 * @param endX End x position.
+	 * @param endY End y position.
+	 *
+	 * @return True if the movement is successful, false otherwise.
 	 */
-	public void move() {
+	public boolean move(Piece piece, int startX, int startY, int endX, int endY) {
 		if (true) throw new RuntimeException("Unit test needed!");
+
+		return false;
+	}
+
+	/**
+	 * Handle click on the board.
+	 *
+	 * @param x Column on the board.
+	 * @param y Row on the board.
+	 *
+	 * @return True if the click is successful, false otherwise.
+	 */
+	public boolean click(int x, int y) {
+		if (true) throw new RuntimeException("Unit test needed!");
+
+		return false;
 	}
 }

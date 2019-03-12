@@ -6,23 +6,17 @@ package com.gmail.boianaradkova.stratego.model;
  * @author Boyana Kantarska
  */
 final class Cell {
-	/**
-	 * What kind of cell.
-	 */
+	/** What kind of cell. */
 	enum Kind {
 		LAKE,
 		CENTRAL,
 		BORDER,
 	};
 
-	/**
-	 * What kind of cell is this one.
-	 */
+	/** What kind of cell is this one. */
 	private Kind kind;
 
-	/**
-	 * Holds reference to a particular piece or null pointer if the cell is empty.
-	 */
+	/** Holds reference to a particular piece or null pointer if the cell is empty. */
 	private Piece piece = null;
 
 	/**

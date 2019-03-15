@@ -20,7 +20,7 @@ public final class Board {
 	};
 
 	/** All pieces available on the board are stored as Java objects in a single collection. */
-	private static final List<Piece> PIECES = new ArrayList<Piece>();
+	private static final List<Piece> PIECES = new ArrayList<>();
 
 	/** Just a reference ot the real object. */
 	private static final Piece BLUE_FLAG;
@@ -47,6 +47,9 @@ public final class Board {
 		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
 		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
 	};
+
+	/** Players on the board. */
+	private final List<Player> players = new ArrayList<>();
 
 	/** Each player moves one piece per turn. */
 	private int turn = 0;

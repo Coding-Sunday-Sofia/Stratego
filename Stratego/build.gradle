@@ -1,8 +1,13 @@
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
 
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
 android {
-    compileSdkVersion 23
+    compileSdkVersion 28
     buildToolsVersion "28.0.3"
 
     defaultConfig {
@@ -34,7 +39,6 @@ dependencies {
     api 'com.scalified:tree:0.2.5'
     api "gradle.plugin.com.vanniktech:gradle-android-javadoc-plugin:0.3.0"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

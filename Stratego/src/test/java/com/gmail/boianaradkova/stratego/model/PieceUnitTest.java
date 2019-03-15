@@ -2,8 +2,6 @@ package com.gmail.boianaradkova.stratego.model;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -21,8 +19,8 @@ public final class PieceUnitTest {
 
 		Piece piece = new Piece(color, rank);
 
-		assertEquals("wrong color", color, piece.color());
-		assertEquals("wrong rank", rank, piece.rank());
+		assertEquals("Wrong color!", color, piece.color());
+		assertEquals("Wrong rank!", rank, piece.rank());
 	}
 
 	/** Test invalid construction of a piece object. */
@@ -52,7 +50,7 @@ public final class PieceUnitTest {
 
 		Piece piece = new Piece(color, rank);
 
-		assertEquals("wrong color", color, piece.color());
-		assertEquals("wrong rank", rank, piece.rank());
+		assertEquals("Wrong color!", color, piece.color());
+		assertEquals("Wrong rank!", rank, piece.rank());
 	}
 }

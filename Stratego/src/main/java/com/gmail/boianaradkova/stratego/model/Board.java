@@ -12,7 +12,7 @@ import java.util.List;
  */
 public final class Board {
 	/** State of the board. */
-	enum State {
+	public enum State {
 		EMPTY,
 		SETUP,
 		PLAY,
@@ -128,6 +128,64 @@ public final class Board {
 	}
 
 	/**
+	 * Board state getter.
+	 *
+	 * @return Board state constant.
+	 */
+	public State state() {
+		return state;
+	}
+
+	/**
+	 * Return list of unused pieces on the board.
+	 *
+	 * @return List of the pieces references.
+	 */
+	public List<Piece> unused() {
+		if (true) throw new RuntimeException("Unit test needed!");
+
+		List<Piece> list = new ArrayList<>();
+
+		return list;
+	}
+
+	/**
+	 * Check for empty cell on the board.
+	 *
+	 * @param x Index of a column on the board.
+	 * @param y Index of a row on the board.
+	 * @return True if the cell is empty, false otherwise.
+	 * @throws ArrayIndexOutOfBoundsException Thrown when cell is out of the board.
+	 */
+	public boolean isEmpty(int x, int y) throws ArrayIndexOutOfBoundsException {
+		if(cells[x][y].piece() == null) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Check for cell allowed for setup.
+	 *
+	 * @param x Index of a column on the board.
+	 * @param y Index of a row on the board.
+	 * @return True if the cell is allowed, false otherwise.
+	 * @throws ArrayIndexOutOfBoundsException Thrown when cell is out of the board.
+	 */
+	public boolean isSetupable(int x, int y) throws ArrayIndexOutOfBoundsException {
+		if (true) throw new RuntimeException("Unit test needed!");
+
+		if(isEmpty(x, y) == false) {
+			return false;
+		}
+
+		//TODO It depends of the player.
+
+		return false;
+	}
+
+	/**
 	 * Check for captured flag.
 	 *
 	 * @param flag Flag of some opponent.
@@ -202,7 +260,21 @@ public final class Board {
 	public boolean place(Piece piece, int x, int y) {
 		if (true) throw new RuntimeException("Unit test needed!");
 
+		//TODO Check for lakes.
+		//TODO Check for occupied cell.
+		//TODO Check for empty cell.
+
 		return false;
+	}
+
+	/**
+	 * Remove piece from the board.
+	 *
+	 * @param x Column index.
+	 * @param y Row index.
+	 */
+	public void remove(int x, int y) {
+		if (true) throw new RuntimeException("Unit test needed!");
 	}
 
 	/**
@@ -232,6 +304,13 @@ public final class Board {
 	 */
 	public boolean click(int x, int y) {
 		if (true) throw new RuntimeException("Unit test needed!");
+
+		switch(state) {
+			case SETUP:
+				break;
+			case PLAY:
+				break;
+		}
 
 		return false;
 	}

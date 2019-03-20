@@ -11,24 +11,36 @@ import java.util.List;
  * @author Boyana Kantarska
  */
 public final class Board {
-	/** State of the board. */
+	/**
+	 * State of the board.
+	 */
 	public enum State {
 		EMPTY,
 		SETUP,
 		PLAY,
 		FINISH,
-	};
+	}
 
-	/** All pieces available on the board are stored as Java objects in a single collection. */
+	;
+
+	/**
+	 * All pieces available on the board are stored as Java objects in a single collection.
+	 */
 	private static final List<Piece> PIECES = new ArrayList<>();
 
-	/** Just a reference ot the real object. */
+	/**
+	 * Just a reference ot the real object.
+	 */
 	private static final Piece BLUE_FLAG;
 
-	/** Just a reference ot the real object. */
+	/**
+	 * Just a reference ot the real object.
+	 */
 	private static final Piece RED_FLAG;
 
-	/** Keep track of the board state. */
+	/**
+	 * Keep track of the board state.
+	 */
 	private State state = State.EMPTY;
 
 	/**
@@ -36,22 +48,26 @@ public final class Board {
 	 * of spaces.
 	 */
 	private final Cell cells[][] = {
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.LAKE),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
-		{	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.CENTRAL),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	new Cell(Cell.Kind.BORDER),	},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
 	};
 
-	/** Players on the board. */
+	/**
+	 * Players on the board.
+	 */
 	private final List<Player> players = new ArrayList<>();
 
-	/** Each player moves one piece per turn. */
+	/**
+	 * Each player moves one piece per turn.
+	 */
 	private int turn = 0;
 
 	/* Initialization of the the static fields. */
@@ -90,6 +106,13 @@ public final class Board {
 		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SAPPER));
 		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SAPPER));
 		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SCOUT));
 		PIECES.add(new Piece(Piece.Color.RED, Piece.Rank.SPY));
 		PIECES.add(RED_FLAG = new Piece(Piece.Color.RED, Piece.Rank.FLAG));
 		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.BOMB));
@@ -123,8 +146,24 @@ public final class Board {
 		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SAPPER));
 		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SAPPER));
 		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
+		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SCOUT));
 		PIECES.add(new Piece(Piece.Color.BLUE, Piece.Rank.SPY));
 		PIECES.add(BLUE_FLAG = new Piece(Piece.Color.BLUE, Piece.Rank.FLAG));
+	}
+
+	/**
+	 * Board state setter.
+	 *
+	 * @param state Board state constant.
+	 */
+	public void state(State state) {
+		this.state = state;
 	}
 
 	/**
@@ -142,9 +181,25 @@ public final class Board {
 	 * @return List of the pieces references.
 	 */
 	public List<Piece> unused() {
-		if (true) throw new RuntimeException("Unit test needed!");
+		List<Piece> list = new ArrayList<>(PIECES);
 
-		List<Piece> list = new ArrayList<>();
+		/* Check each piece one by one. */
+		for (Piece piece : PIECES) {
+			for (Cell array[] : cells) {
+				for (Cell element : array) {
+					if (element.piece() == null) {
+						continue;
+					}
+
+					if (piece.equals(element.piece()) == false) {
+						continue;
+					}
+
+					/* If the piece is found, remove it from the list. */
+					list.remove(piece);
+				}
+			}
+		}
 
 		return list;
 	}
@@ -158,7 +213,7 @@ public final class Board {
 	 * @throws ArrayIndexOutOfBoundsException Thrown when cell is out of the board.
 	 */
 	public boolean isEmpty(int x, int y) throws ArrayIndexOutOfBoundsException {
-		if(cells[x][y].piece() == null) {
+		if (cells[x][y].piece() == null) {
 			return true;
 		}
 
@@ -176,7 +231,7 @@ public final class Board {
 	public boolean isSetupable(int x, int y) throws ArrayIndexOutOfBoundsException {
 		if (true) throw new RuntimeException("Unit test needed!");
 
-		if(isEmpty(x, y) == false) {
+		if (isEmpty(x, y) == false) {
 			return false;
 		}
 
@@ -201,11 +256,11 @@ public final class Board {
 		}
 
 		/* Capturing is checked by player flag. */
-		if(flag.rank() != Piece.Rank.FLAG) {
-			if(flag.color() == Piece.Color.RED) {
+		if (flag.rank() != Piece.Rank.FLAG) {
+			if (flag.color() == Piece.Color.RED) {
 				flag = RED_FLAG;
 			}
-			if(flag.color() == Piece.Color.BLUE) {
+			if (flag.color() == Piece.Color.BLUE) {
 				flag = BLUE_FLAG;
 			}
 		}
@@ -224,7 +279,7 @@ public final class Board {
 	 */
 	private boolean hasValidMove(Piece.Color player) {
 		/* If the player does not exist he could nod move. */
-		if(player == null) {
+		if (player == null) {
 			return false;
 		}
 
@@ -252,19 +307,54 @@ public final class Board {
 	 * Place piece over the board.
 	 *
 	 * @param piece Piece reference for deployment.
-	 * @param x Column index.
-	 * @param y Row index.
-	 *
+	 * @param x     Column index.
+	 * @param y     Row index.
 	 * @return True if the placement is successful, false otherwise.
+	 * @throws RuntimeException Invalid placement.
 	 */
-	public boolean place(Piece piece, int x, int y) {
+	public boolean place(Piece piece, int x, int y) throws RuntimeException {
 		if (true) throw new RuntimeException("Unit test needed!");
 
-		//TODO Check for lakes.
-		//TODO Check for occupied cell.
-		//TODO Check for empty cell.
+		if (piece == null) {
+			throw new RuntimeException("Invalid piece!");
+		}
 
-		return false;
+		if (x < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (x >= cells.length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y >= cells[x].length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		/* Lakes are forbidden territory. */
+		if (cells[x][y].territory() == Cell.Territory.LAKE) {
+			return false;
+		}
+
+		/* Occupied cell is forbidden for placement. */
+		if (cells[x][y].piece() != null) {
+			return false;
+		}
+
+		/* Only proper territory can be used for the placement. */
+		if (cells[x][y].territory() == Cell.Territory.RED && piece.color() == Piece.Color.BLUE) {
+			return false;
+		} else if (cells[x][y].territory() == Cell.Territory.BLUE && piece.color() == Piece.Color.RED) {
+			return false;
+		}
+
+		/* Place piece on the board. */
+		cells[x][y].piece(piece);
+		return true;
 	}
 
 	/**
@@ -272,20 +362,45 @@ public final class Board {
 	 *
 	 * @param x Column index.
 	 * @param y Row index.
+	 * @return True if the removement is successful, false otherwise.
 	 */
-	public void remove(int x, int y) {
+	public boolean remove(int x, int y) {
 		if (true) throw new RuntimeException("Unit test needed!");
+
+		if (x < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (x >= cells.length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y >= cells[x].length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		/* If there is no piece there is nothing to remove. */
+		if (cells[x][y].piece() == null) {
+			return false;
+		}
+
+		/* Set a null pointer as remove procedure. */
+		cells[x][y].piece(null);
+		return true;
 	}
 
 	/**
 	 * Do a single move during playing phase.
 	 *
-	 * @param piece Piece to move.
+	 * @param piece  Piece to move.
 	 * @param startX Start x position.
 	 * @param startY Start y position.
-	 * @param endX End x position.
-	 * @param endY End y position.
-	 *
+	 * @param endX   End x position.
+	 * @param endY   End y position.
 	 * @return True if the movement is successful, false otherwise.
 	 */
 	public boolean move(Piece piece, int startX, int startY, int endX, int endY) {
@@ -299,13 +414,12 @@ public final class Board {
 	 *
 	 * @param x Column on the board.
 	 * @param y Row on the board.
-	 *
 	 * @return True if the click is successful, false otherwise.
 	 */
 	public boolean click(int x, int y) {
 		if (true) throw new RuntimeException("Unit test needed!");
 
-		switch(state) {
+		switch (state) {
 			case SETUP:
 				break;
 			case PLAY:

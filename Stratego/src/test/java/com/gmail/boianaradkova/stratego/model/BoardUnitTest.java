@@ -29,14 +29,39 @@ public final class BoardUnitTest {
 	public void checkForUnusedPieces() {
 		Board board = new Board();
 
-		//TODO board.state(Board.State.SETUP);
+		board.state(Board.State.SETUP);
 
+		/* Pieces are not used yet. */
 		List<Piece> pieces = board.unused();
-		//TODO Check list size.
+		assertEquals("All pieces should not be unused!", 80, pieces.size());
 
-		//TODO Place all pices on the board.
+		/* Place all pices on the board. */
+		while (pieces.size() > 0) {
+			if (board.place(pieces.get(0), (int) (Math.random() * 10), (int) (Math.random() * 10)) == false) {
+				continue;
+			}
+
+			pieces.remove(0);
+		}
+
+		//TODO Check for half of the pieces to be used.
+
+		/* When all pieces are on the board there should not be unused pieces. */
 		pieces = board.unused();
-		//TODO Check for zero size of the list.
+		assertEquals("All pieces should be unused!", 0, pieces.size());
+
+		//TODO Check for half of the pieces to be used.
+
+		/* Remove all pieces from the board. */
+		for (int y = 0; y < 10; y++) {
+			for (int x = 0; x < 10; x++) {
+				board.remove(x, y);
+			}
+		}
+
+		/* Pieces are not used anymore. */
+		pieces = board.unused();
+		assertEquals("All pieces should not be unused!", 80, pieces.size());
 	}
 
 	/**

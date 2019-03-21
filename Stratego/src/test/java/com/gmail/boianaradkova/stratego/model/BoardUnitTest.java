@@ -75,32 +75,32 @@ public final class BoardUnitTest {
 		try {
 			board.isEmpty(-1, -1);
 			fail("Invalid coordinates exception was not thrown!");
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (RuntimeException e) {
 		}
 		try {
 			board.isEmpty(0, -1);
 			fail("Invalid coordinates exception was not thrown!");
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (RuntimeException e) {
 		}
 		try {
 			board.isEmpty(-1, 0);
 			fail("Invalid coordinates exception was not thrown!");
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (RuntimeException e) {
 		}
 		try {
 			board.isEmpty(Integer.MAX_VALUE, Integer.MAX_VALUE);
 			fail("Invalid coordinates exception was not thrown!");
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (RuntimeException e) {
 		}
 		try {
 			board.isEmpty(0, Integer.MAX_VALUE);
 			fail("Invalid coordinates exception was not thrown!");
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (RuntimeException e) {
 		}
 		try {
 			board.isEmpty(Integer.MAX_VALUE, 0);
 			fail("Invalid coordinates exception was not thrown!");
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (RuntimeException e) {
 		}
 
 		/* Select random piece of pieces, which are not on the board. */
@@ -114,5 +114,222 @@ public final class BoardUnitTest {
 		/* Test when the cell is empty. */
 		board.remove(0, 0);
 		assertEquals("Cell should be empty!", true, board.isEmpty(0, 0));
+	}
+
+	/**
+	 * Test of the pieces placement during setup stage.
+	 */
+	@Test
+	public void piecesPlacement() {
+		Board board = new Board();
+		List<Piece> list = board.unused();
+		Collections.shuffle(list);
+		Piece piece = list.get(0);
+
+		/* Test for invalid piece placement. */
+		try {
+			board.place(null, 0, 0);
+			fail("Invalid piece exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+
+		/* Test outside of the board. */
+		try {
+			board.place(piece, -1, -1);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.place(piece, 0, -1);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.place(piece, -1, 0);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.place(piece, Integer.MAX_VALUE, Integer.MAX_VALUE);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.place(piece, 0, Integer.MAX_VALUE);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.place(piece, Integer.MAX_VALUE, 0);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+
+		int x = -1;
+		int y = -1;
+		Cell[][] cells = board.cells();
+
+		/* Select lake position. */
+		do {
+			x = (int) (Math.random() * cells.length);
+			y = (int) (Math.random() * cells[x].length);
+		} while (cells[x][y].territory() != Cell.Territory.LAKE);
+
+		/* Test for invalid lakes placement. */
+		assertEquals("Lakes are forbidden for placement!", false, board.place(piece, x, y));
+
+		/* Place some piece somewhere on the board. */
+		do {
+			Collections.shuffle(list);
+			piece = list.get(0);
+
+			x = (int) (Math.random() * cells.length);
+			y = (int) (Math.random() * cells[x].length);
+		} while (board.place(piece, x, y) == false);
+
+		/* Select another piece. */
+		list = board.unused();
+		Collections.shuffle(list);
+		piece = list.get(0);
+
+		/* Test for invalid placement on occupied cell. */
+		assertEquals("Occupied cells are forbidden for placement!", false, board.place(piece, x, y));
+
+		/* Select red territory and blue piece. */
+		do {
+			x = (int) (Math.random() * cells.length);
+			y = (int) (Math.random() * cells[x].length);
+
+			Collections.shuffle(list);
+			piece = list.get(0);
+		}
+		while (board.isEmpty(x, y) == false || cells[x][y].territory() != Cell.Territory.RED || piece.color() != Piece.Color.BLUE);
+
+		/* Test for opponent's territory placement. */
+		assertEquals("Opponent's cells are forbidden for placement!", false, board.place(piece, x, y));
+
+		/* Select blue territory and red piece. */
+		do {
+			x = (int) (Math.random() * cells.length);
+			y = (int) (Math.random() * cells[x].length);
+
+			Collections.shuffle(list);
+			piece = list.get(0);
+		}
+		while (board.isEmpty(x, y) == false || cells[x][y].territory() != Cell.Territory.BLUE || piece.color() != Piece.Color.RED);
+
+		/* Test for opponent's territory placement. */
+		assertEquals("Opponent's cells are forbidden for placement!", false, board.place(piece, x, y));
+
+		/* Select piece and territory with the same color. */
+
+		/* Select territory and piece from the same color. */
+		while (true) {
+			x = (int) (Math.random() * cells.length);
+			y = (int) (Math.random() * cells[x].length);
+
+			Collections.shuffle(list);
+			piece = list.get(0);
+
+			/* Search for empty cell. */
+			if (board.isEmpty(x, y) == false) {
+				continue;
+			}
+
+			/* Search fof cell and territory with same colors. */
+			if (cells[x][y].territory() == Cell.Territory.BLUE && piece.color() == Piece.Color.RED) {
+				continue;
+			}
+
+			/* Search fof cell and territory with same colors. */
+			if (cells[x][y].territory() == Cell.Territory.RED && piece.color() == Piece.Color.BLUE) {
+				continue;
+			}
+
+			/* Brake searching if empty cell with proper color as the piece color is found. */
+			break;
+		}
+
+		/* Test for opponent's territory placement. */
+		assertEquals("Valid placement was not possible!", true, board.place(piece, x, y));
+	}
+
+	/**
+	 * Test of the pieces removal during play stage.
+	 */
+	@Test
+	public void piecesRemoval() {
+		Board board = new Board();
+
+		/* Test outside of the board. */
+		try {
+			board.remove(-1, -1);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.remove(0, -1);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.remove(-1, 0);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.remove(Integer.MAX_VALUE, Integer.MAX_VALUE);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.remove(0, Integer.MAX_VALUE);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+		try {
+			board.remove(Integer.MAX_VALUE, 0);
+			fail("Invalid coordinates exception was not thrown!");
+		} catch (RuntimeException e) {
+		}
+
+		/* Test for empty cell piece removal. */
+		assertEquals("Inpossible remove from an empty cell!", false, board.remove(0, 0));
+
+		/* Select territory and piece from the same color. */
+		int x = -1;
+		int y = -1;
+		Piece piece = null;
+		Cell[][] cells = board.cells();
+		List<Piece> list = board.unused();
+		while (true) {
+			x = (int) (Math.random() * cells.length);
+			y = (int) (Math.random() * cells[x].length);
+
+			Collections.shuffle(list);
+			piece = list.get(0);
+
+			/* Search for empty cell. */
+			if (board.isEmpty(x, y) == false) {
+				continue;
+			}
+
+			/* Search fof cell and territory with same colors. */
+			if (cells[x][y].territory() == Cell.Territory.BLUE && piece.color() == Piece.Color.RED) {
+				continue;
+			}
+
+			/* Search fof cell and territory with same colors. */
+			if (cells[x][y].territory() == Cell.Territory.RED && piece.color() == Piece.Color.BLUE) {
+				continue;
+			}
+
+			/* Brake searching if empty cell with proper color as the piece color is found. */
+			break;
+		}
+		board.place(piece, x, y);
+
+		/* Test for occupied by piece cell removal. */
+		assertEquals("It should be a valid removal!", true, board.remove(x, y));
 	}
 }

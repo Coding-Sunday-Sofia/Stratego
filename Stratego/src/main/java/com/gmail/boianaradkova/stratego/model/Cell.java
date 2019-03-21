@@ -35,7 +35,7 @@ final class Cell {
 	 * @return Territory constant.
 	 */
 	public Territory territory() {
-		if (true) throw new RuntimeException("Unit test needed!");
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
 		return territory;
 	}
 

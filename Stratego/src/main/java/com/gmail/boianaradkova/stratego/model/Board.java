@@ -61,14 +61,14 @@ public final class Board {
 	};
 
 	/**
-	 * Players on the board.
-	 */
-	private final List<Player> players = new ArrayList<>();
-
-	/**
 	 * Each player moves one piece per turn.
 	 */
 	private int turn = 0;
+
+	/**
+	 * Players on the board.
+	 */
+	private final List<Player> players = new ArrayList<>();
 
 	/* Initialization of the the static fields. */
 	static {
@@ -176,6 +176,16 @@ public final class Board {
 	}
 
 	/**
+	 * Cells getter.
+	 *
+	 * @return Array reference to the cells object.
+	 */
+	public Cell[][] cells() {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		return cells;
+	}
+
+	/**
 	 * Return list of unused pieces on the board.
 	 *
 	 * @return List of the pieces references.
@@ -210,9 +220,25 @@ public final class Board {
 	 * @param x Index of a column on the board.
 	 * @param y Index of a row on the board.
 	 * @return True if the cell is empty, false otherwise.
-	 * @throws ArrayIndexOutOfBoundsException Thrown when cell is out of the board.
+	 * @throws RuntimeException Thrown when cell is out of the board.
 	 */
-	public boolean isEmpty(int x, int y) throws ArrayIndexOutOfBoundsException {
+	public boolean isEmpty(int x, int y) throws RuntimeException {
+		if (x < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (x >= cells.length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y >= cells[x].length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
 		if (cells[x][y].piece() == null) {
 			return true;
 		}
@@ -226,10 +252,26 @@ public final class Board {
 	 * @param x Index of a column on the board.
 	 * @param y Index of a row on the board.
 	 * @return True if the cell is allowed, false otherwise.
-	 * @throws ArrayIndexOutOfBoundsException Thrown when cell is out of the board.
+	 * @throws RuntimeException Thrown when cell is out of the board.
 	 */
-	public boolean isSetupable(int x, int y) throws ArrayIndexOutOfBoundsException {
+	public boolean isSetupable(int x, int y) throws RuntimeException {
 		if (true) throw new RuntimeException("Unit test needed!");
+
+		if (x < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (x >= cells.length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y >= cells[x].length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
 
 		if (isEmpty(x, y) == false) {
 			return false;
@@ -313,8 +355,6 @@ public final class Board {
 	 * @throws RuntimeException Invalid placement.
 	 */
 	public boolean place(Piece piece, int x, int y) throws RuntimeException {
-		if (true) throw new RuntimeException("Unit test needed!");
-
 		if (piece == null) {
 			throw new RuntimeException("Invalid piece!");
 		}
@@ -363,10 +403,9 @@ public final class Board {
 	 * @param x Column index.
 	 * @param y Row index.
 	 * @return True if the removement is successful, false otherwise.
+	 * @throws RuntimeException Thrown for invalid coordinates.
 	 */
-	public boolean remove(int x, int y) {
-		if (true) throw new RuntimeException("Unit test needed!");
-
+	public boolean remove(int x, int y) throws RuntimeException {
 		if (x < 0) {
 			throw new RuntimeException("Invalid coordinates!");
 		}
@@ -415,9 +454,26 @@ public final class Board {
 	 * @param x Column on the board.
 	 * @param y Row on the board.
 	 * @return True if the click is successful, false otherwise.
+	 * @throws RuntimeException Thrown for invalid coordinates.
 	 */
-	public boolean click(int x, int y) {
+	public boolean click(int x, int y) throws RuntimeException {
 		if (true) throw new RuntimeException("Unit test needed!");
+
+		if (x < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y < 0) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (x >= cells.length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
+
+		if (y >= cells[x].length) {
+			throw new RuntimeException("Invalid coordinates!");
+		}
 
 		switch (state) {
 			case SETUP:

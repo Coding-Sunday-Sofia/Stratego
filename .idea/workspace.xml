@@ -84,7 +84,7 @@
     <session id="1721699583">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="15" />
+          <entry key="project.closed" value="16" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.35" value="1" />
@@ -98,13 +98,14 @@
           <entry key="project.open.time.64" value="2" />
           <entry key="project.open.time.69" value="1" />
           <entry key="project.open.time.78" value="1" />
-          <entry key="project.opened" value="15" />
+          <entry key="project.open.time.88" value="1" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gradle" value="11" />
-          <entry key="java" value="67" />
+          <entry key="java" value="72" />
           <entry key="png" value="33" />
           <entry key="properties" value="2" />
           <entry key="xml" value="14" />
@@ -115,7 +116,7 @@
         <counts>
           <entry key="Groovy" value="11" />
           <entry key="Image" value="33" />
-          <entry key="JAVA" value="67" />
+          <entry key="JAVA" value="72" />
           <entry key="Properties" value="2" />
           <entry key="XML" value="14" />
           <entry key="YAML" value="1" />
@@ -125,14 +126,14 @@
         <counts>
           <entry key="dummy" value="19" />
           <entry key="gradle" value="45" />
-          <entry key="java" value="11135" />
+          <entry key="java" value="12793" />
           <entry key="xml" value="222" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Groovy" value="45" />
-          <entry key="JAVA" value="11135" />
+          <entry key="JAVA" value="12793" />
           <entry key="PLAIN_TEXT" value="19" />
           <entry key="XML" value="222" />
         </counts>
@@ -140,53 +141,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Board.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="312" column="12" selection-start-line="312" selection-start-column="6" selection-end-line="312" selection-end-column="12" />
-              <folding>
-                <element signature="e#8830#8831#0" expanded="true" />
-                <element signature="e#8855#8856#0" expanded="true" />
-                <element signature="e#8889#8890#0" expanded="true" />
-                <element signature="e#8908#8909#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Piece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="193" column="8" selection-start-line="193" selection-start-column="8" selection-end-line="193" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="30" selection-start-line="29" selection-end-line="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Stratego/src/test/java/com/gmail/boianaradkova/stratego/model/BoardUnitTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -239,9 +194,9 @@
         <option value="$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Player.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/BoardActivity.java" />
-        <option value="$PROJECT_DIR$/Stratego/src/test/java/com/gmail/boianaradkova/stratego/model/BoardUnitTest.java" />
         <option value="$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Cell.java" />
         <option value="$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Board.java" />
+        <option value="$PROJECT_DIR$/Stratego/src/test/java/com/gmail/boianaradkova/stratego/model/BoardUnitTest.java" />
       </list>
     </option>
   </component>
@@ -259,7 +214,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Stratego" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Stratego" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -289,6 +255,12 @@
               <item name="Stratego" type="1abcf292:AndroidViewProjectNode" />
               <item name="Stratego-Stratego" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="stratego" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Stratego" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Stratego-Stratego" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="model" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
@@ -299,18 +271,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Stratego" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Stratego" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -618,24 +579,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="BoardUnitTest - 2019.03.17 at 14h 53m 05s.xml">
-      <configuration name="BoardUnitTest" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="model_in_Stratego-Stratego - 2019.03.20 at 15h 43m 06s.xml">
-      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="model_in_Stratego-Stratego - 2019.03.20 at 16h 01m 32s.xml">
-      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="model_in_Stratego-Stratego - 2019.03.20 at 16h 10m 47s.xml">
-      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="model_in_Stratego-Stratego - 2019.03.20 at 16h 14m 03s.xml">
-      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
-    </history-entry>
-    <history-entry file="model_in_Stratego-Stratego - 2019.03.20 at 16h 14m 38s.xml">
-      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
-    </history-entry>
     <history-entry file="model_in_Stratego-Stratego - 2019.03.20 at 16h 28m 46s.xml">
       <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
     </history-entry>
@@ -648,10 +591,27 @@
     <history-entry file="model_in_Stratego-Stratego - 2019.03.20 at 17h 05m 16s.xml">
       <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
     </history-entry>
+    <history-entry file="model_in_Stratego-Stratego - 2019.03.21 at 13h 26m 54s.xml">
+      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="model_in_Stratego-Stratego - 2019.03.21 at 14h 34m 54s.xml">
+      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="model_in_Stratego-Stratego - 2019.03.21 at 14h 35m 58s.xml">
+      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="model_in_Stratego-Stratego - 2019.03.21 at 14h 37m 35s.xml">
+      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="model_in_Stratego-Stratego - 2019.03.21 at 14h 38m 07s.xml">
+      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="model_in_Stratego-Stratego - 2019.03.21 at 14h 48m 37s.xml">
+      <configuration name="model in Stratego-Stratego" configurationId="AndroidJUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="72" y="23" width="1208" height="1001" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="1" />
@@ -888,44 +848,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/BoardActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2719#3407#0" expanded="true" />
-            <element signature="e#3406#3407#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Stratego/src/test/java/com/gmail/boianaradkova/stratego/model/BoardUnitTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Piece.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
+        <state relative-caret-position="3515">
           <caret line="193" column="8" selection-start-line="193" selection-start-column="8" selection-end-line="193" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="487" lean-forward="true" selection-start-line="487" selection-end-line="487" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="37" column="46" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="46" />
+        <state relative-caret-position="399">
+          <caret line="48" column="18" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="18" />
           <folding>
             <element signature="e#539#540#0" expanded="true" />
             <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#675#676#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -937,15 +880,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/model/Board.java">
+    <entry file="file://$PROJECT_DIR$/Stratego/src/test/java/com/gmail/boianaradkova/stratego/model/BoardUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="312" column="12" selection-start-line="312" selection-start-column="6" selection-end-line="312" selection-end-column="12" />
+        <state relative-caret-position="247">
+          <caret line="267" lean-forward="true" selection-start-line="267" selection-end-line="267" />
           <folding>
-            <element signature="e#8830#8831#0" expanded="true" />
-            <element signature="e#8855#8856#0" expanded="true" />
-            <element signature="e#8889#8890#0" expanded="true" />
-            <element signature="e#8908#8909#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Stratego/src/main/java/com/gmail/boianaradkova/stratego/BoardActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

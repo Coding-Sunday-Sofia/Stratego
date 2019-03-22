@@ -15,13 +15,8 @@ public final class Board {
 	 * State of the board.
 	 */
 	public enum State {
-		EMPTY,
-		SETUP,
-		PLAY,
-		FINISH,
+		EMPTY, SETUP, PLAY, FINISH;
 	}
-
-	;
 
 	/**
 	 * All pieces available on the board are stored as Java objects in a single collection.
@@ -249,13 +244,16 @@ public final class Board {
 	/**
 	 * Check for cell allowed for setup.
 	 *
+	 * @param piece Piece to be placed.
 	 * @param x Index of a column on the board.
 	 * @param y Index of a row on the board.
 	 * @return True if the cell is allowed, false otherwise.
-	 * @throws RuntimeException Thrown when cell is out of the board.
+	 * @throws RuntimeException Thrown when placement parameters are invalid.
 	 */
-	public boolean isSetupable(int x, int y) throws RuntimeException {
-		if (true) throw new RuntimeException("Unit test needed!");
+	public boolean possiblePlacement(Piece piece, int x, int y) throws RuntimeException {
+		if (piece == null) {
+			throw new RuntimeException("Invalid piece!");
+		}
 
 		if (x < 0) {
 			throw new RuntimeException("Invalid coordinates!");
@@ -273,13 +271,29 @@ public final class Board {
 			throw new RuntimeException("Invalid coordinates!");
 		}
 
+		/* Lakes are forbidden for placement. */
+		if(cells[x][y].territory() == Cell.Territory.LAKE) {
+			return false;
+		}
+
+		/* Central territories are forbidden during setup stage. */
+		if(cells[x][y].territory() == Cell.Territory.NEUTRAL) {
+			return false;
+		}
+
+		/* Player color and cell territory should correspond. */
+		if (cells[x][y].territory() == Cell.Territory.RED && piece.color() == Piece.Color.BLUE) {
+			return false;
+		} else if (cells[x][y].territory() == Cell.Territory.BLUE && piece.color() == Piece.Color.RED) {
+			return false;
+		}
+
+		/* Placement is not possible on occupied cells. */
 		if (isEmpty(x, y) == false) {
 			return false;
 		}
 
-		//TODO It depends of the player.
-
-		return false;
+		return true;
 	}
 
 	/**
@@ -386,9 +400,7 @@ public final class Board {
 		}
 
 		/* Only proper territory can be used for the placement. */
-		if (cells[x][y].territory() == Cell.Territory.RED && piece.color() == Piece.Color.BLUE) {
-			return false;
-		} else if (cells[x][y].territory() == Cell.Territory.BLUE && piece.color() == Piece.Color.RED) {
+		if(possiblePlacement(piece, x, y) == false) {
 			return false;
 		}
 
@@ -457,8 +469,6 @@ public final class Board {
 	 * @throws RuntimeException Thrown for invalid coordinates.
 	 */
 	public boolean click(int x, int y) throws RuntimeException {
-		if (true) throw new RuntimeException("Unit test needed!");
-
 		if (x < 0) {
 			throw new RuntimeException("Invalid coordinates!");
 		}
@@ -474,6 +484,8 @@ public final class Board {
 		if (y >= cells[x].length) {
 			throw new RuntimeException("Invalid coordinates!");
 		}
+
+		if (true) throw new RuntimeException("Unit test needed!");
 
 		switch (state) {
 			case SETUP:

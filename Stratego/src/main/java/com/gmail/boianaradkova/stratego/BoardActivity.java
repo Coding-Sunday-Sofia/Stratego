@@ -58,7 +58,7 @@ public class BoardActivity extends Activity {
 
 					//Toast.makeText(BoardActivity.this, "Cell"+i+""+j,	Toast.LENGTH_SHORT).show();
 
-					if (board.state() == Board.State.SETUP && board.isSetupable(i, j) == true) {
+					if (board.state() == Board.State.SETUP) {
 						lastClicked = new Point(i, j);
 						//TODO Show list with the available pieces.
 					} else {

@@ -43,16 +43,16 @@ public final class Board {
 	 * of spaces.
 	 */
 	private final Cell cells[][] = {
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
-					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.LAKE), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
+					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
 	};
 
 	/**
@@ -245,8 +245,8 @@ public final class Board {
 	 * Check for cell allowed for setup.
 	 *
 	 * @param piece Piece to be placed.
-	 * @param x Index of a column on the board.
-	 * @param y Index of a row on the board.
+	 * @param x     Index of a column on the board.
+	 * @param y     Index of a row on the board.
 	 * @return True if the cell is allowed, false otherwise.
 	 * @throws RuntimeException Thrown when placement parameters are invalid.
 	 */
@@ -272,12 +272,12 @@ public final class Board {
 		}
 
 		/* Lakes are forbidden for placement. */
-		if(cells[x][y].territory() == Cell.Territory.LAKE) {
+		if (cells[x][y].territory() == Cell.Territory.LAKE) {
 			return false;
 		}
 
 		/* Central territories are forbidden during setup stage. */
-		if(cells[x][y].territory() == Cell.Territory.NEUTRAL) {
+		if (cells[x][y].territory() == Cell.Territory.NEUTRAL) {
 			return false;
 		}
 
@@ -400,7 +400,7 @@ public final class Board {
 		}
 
 		/* Only proper territory can be used for the placement. */
-		if(possiblePlacement(piece, x, y) == false) {
+		if (possiblePlacement(piece, x, y) == false) {
 			return false;
 		}
 
@@ -495,5 +495,24 @@ public final class Board {
 		}
 
 		return false;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		String result = "";
+
+		for (int y = 0; y < cells.length; y++) {
+			for (int x = 0; x < cells.length; x++) {
+				result += cells[x][y];
+				result += " ";
+			}
+			result += "\n";
+		}
+
+		return result;
 	}
 }

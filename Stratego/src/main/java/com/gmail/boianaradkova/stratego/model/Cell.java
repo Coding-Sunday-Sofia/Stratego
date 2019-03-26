@@ -6,18 +6,49 @@ package com.gmail.boianaradkova.stratego.model;
  * @author Boyana Kantarska
  */
 final class Cell {
-	/** What kind of cell. */
+	/**
+	 * What kind of cell.
+	 */
 	enum Territory {
-		LAKE,
-		NEUTRAL,
-		RED,
-		BLUE,
-	};
+		LAKE("L"),
+		NEUTRAL("N"),
+		RED("R"),
+		BLUE("B");
 
-	/** What kind of cell is this one. */
+		/**
+		 * Letter for territory representation.
+		 */
+		private String letter;
+
+		/**
+		 * Constructor with parameters.
+		 *
+		 * @param letter Letter for the territory.
+		 */
+		Territory(String letter) {
+			this.letter = letter;
+		}
+
+		/**
+		 * Letter getter.
+		 *
+		 * @return Territory letter.
+		 */
+		public String letter() {
+			return letter;
+		}
+	}
+
+	;
+
+	/**
+	 * What kind of cell is this one.
+	 */
 	private Territory territory;
 
-	/** Holds reference to a particular piece or null pointer if the cell is empty. */
+	/**
+	 * Holds reference to a particular piece or null pointer if the cell is empty.
+	 */
 	private Piece piece = null;
 
 	/**
@@ -65,5 +96,14 @@ final class Cell {
 	 */
 	public void piece(Piece piece) {
 		this.piece = piece;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		return "" + territory.letter() + ((piece == null) ? ("__") : ("" + piece.rank().letter() + piece.color().letter()));
 	}
 }

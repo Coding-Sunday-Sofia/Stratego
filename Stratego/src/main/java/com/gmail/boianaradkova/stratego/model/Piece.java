@@ -12,18 +12,18 @@ final class Piece {
 	 * Each piece has rank as property.
 	 */
 	enum Rank {
-		BOMB(Movement.FIXED),
-		MARSHAL(Movement.SINGLE),
-		GENERAL(Movement.SINGLE),
-		COLONEL(Movement.SINGLE),
-		MAJOR(Movement.SINGLE),
-		CAPTAIN(Movement.SINGLE),
-		LIEUTENANT(Movement.SINGLE),
-		SERGEANT(Movement.SINGLE),
-		SAPPER(Movement.SINGLE),
-		SCOUT(Movement.MULTIPLE),
-		SPY(Movement.SINGLE),
-		FLAG(Movement.FIXED);
+		BOMB(Movement.FIXED, "B"),
+		MARSHAL(Movement.SINGLE, "M"),
+		GENERAL(Movement.SINGLE, "G"),
+		COLONEL(Movement.SINGLE, "C"),
+		MAJOR(Movement.SINGLE, "J"),
+		CAPTAIN(Movement.SINGLE, "C"),
+		LIEUTENANT(Movement.SINGLE, "L"),
+		SERGEANT(Movement.SINGLE, "S"),
+		SAPPER(Movement.SINGLE, "P"),
+		SCOUT(Movement.MULTIPLE, "T"),
+		SPY(Movement.SINGLE, "Y"),
+		FLAG(Movement.FIXED, "F");
 
 		/**
 		 * All possible movement strategies.
@@ -125,12 +125,19 @@ final class Piece {
 		private final Movement movement;
 
 		/**
+		 * Piece letter representation.
+		 */
+		private String letter;
+
+		/**
 		 * Constrictor with parameters.
 		 *
 		 * @param movement Allowed movement.
+		 * @param letter   Letter representation.
 		 */
-		Rank(Movement movement) {
+		Rank(Movement movement, String letter) {
 			this.movement = movement;
+			this.letter = letter;
 		}
 
 		/**
@@ -138,8 +145,17 @@ final class Piece {
 		 *
 		 * @return Movement object reference.
 		 */
-		public Movement movement() {
+		Movement movement() {
 			return movement;
+		}
+
+		/**
+		 * Letter getter.
+		 *
+		 * @return Territory letter.
+		 */
+		public String letter() {
+			return letter;
 		}
 	}
 
@@ -147,8 +163,31 @@ final class Piece {
 	 * Each piece has color as property.
 	 */
 	enum Color {
-		RED,
-		BLUE;
+		RED("R"),
+		BLUE("B");
+
+		/**
+		 * Piece color letter.
+		 */
+		private String letter;
+
+		/**
+		 * Constructor with parameters.
+		 *
+		 * @param letter Letter representation of the color.
+		 */
+		Color(String letter) {
+			this.letter = letter;
+		}
+
+		/**
+		 * Letter getter.
+		 *
+		 * @return Territory letter.
+		 */
+		public String letter() {
+			return letter;
+		}
 	}
 
 	/**

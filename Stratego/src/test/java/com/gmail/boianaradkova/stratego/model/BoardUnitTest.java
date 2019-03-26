@@ -25,7 +25,7 @@ public final class BoardUnitTest {
 	/**
 	 * Test cases for unused pieces during setup stage.
 	 */
-//	@Test
+	@Test
 	public void checkForUnusedPieces() {
 		Board board = new Board();
 
@@ -35,8 +35,9 @@ public final class BoardUnitTest {
 		List<Piece> pieces = board.unused();
 		assertEquals("All pieces should not be unused!", 80, pieces.size());
 
-		/* Place all pices on the board. */
+		/* Place all pieces on the board. */
 		while (pieces.size() > 0) {
+			Collections.shuffle(pieces);
 			if (board.place(pieces.get(0), (int) (Math.random() * 10), (int) (Math.random() * 10)) == false) {
 				continue;
 			}

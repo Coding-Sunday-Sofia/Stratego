@@ -2,11 +2,20 @@ package com.gmail.boianaradkova.stratego;
 
 import android.app.Activity;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.gmail.boianaradkova.stratego.model.Board;
+import com.gmail.boianaradkova.stratego.model.Cell;
+import com.gmail.boianaradkova.stratego.model.Piece;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.gmail.boianaradkova.stratego.model.Board.PIECES;
 
 /**
  * Game board screen.
@@ -17,7 +26,7 @@ public class BoardActivity extends Activity {
 	/**
 	 * Drawable resources needed for an empty battlefield.
 	 */
-	private final int EMPTY_FIELD_DRAWABLES[][] = {
+	private static final int EMPTY_FIELD_DRAWABLES[][] = {
 					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
 					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass2, R.drawable.grass2, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
 					{R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.lake11, R.drawable.lake13, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1, R.drawable.grass1,},
@@ -31,9 +40,14 @@ public class BoardActivity extends Activity {
 	};
 
 	/**
+	 * Drawable resources for the pieces.
+	 */
+	private static final Map<Piece, Integer> PIECES_DRAWABLES = new HashMap<>();
+
+	/**
 	 * Keep references to image view controls.
 	 */
-	private ImageView cells[][] = null;
+	private ImageView cellView[][] = null;
 
 	/**
 	 * Coordinates of the last clicked cell.
@@ -49,10 +63,10 @@ public class BoardActivity extends Activity {
 		public void onClick(View view) {
 			//TODO Find way to do unit testing.
 			loops:
-			for (int i = 0; i < cells.length; i++) {
-				for (int j = 0; j < cells[i].length; j++) {
+			for (int i = 0; i < cellView.length; i++) {
+				for (int j = 0; j < cellView[i].length; j++) {
 					/* If the view reference does not match do nothing. */
-					if (view != cells[i][j]) {
+					if (view != cellView[i][j]) {
 						continue;
 					}
 
@@ -68,6 +82,9 @@ public class BoardActivity extends Activity {
 					break loops;
 				}
 			}
+
+			/* Redraw GUI after model action. */
+			updateViews();
 		}
 	};
 
@@ -76,16 +93,153 @@ public class BoardActivity extends Activity {
 	 */
 	private Board board = new Board();
 
+	/* Initialization of the the static fields. */
+	static {
+		PIECES_DRAWABLES.put(PIECES.get(0), R.drawable.red_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(1), R.drawable.red_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(2), R.drawable.red_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(3), R.drawable.red_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(4), R.drawable.red_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(5), R.drawable.red_bomb);
+
+		PIECES_DRAWABLES.put(PIECES.get(6), R.drawable.red_10);
+
+		PIECES_DRAWABLES.put(PIECES.get(7), R.drawable.red_09);
+
+		PIECES_DRAWABLES.put(PIECES.get(8), R.drawable.red_08);
+		PIECES_DRAWABLES.put(PIECES.get(9), R.drawable.red_08);
+
+		PIECES_DRAWABLES.put(PIECES.get(10), R.drawable.red_07);
+		PIECES_DRAWABLES.put(PIECES.get(11), R.drawable.red_07);
+		PIECES_DRAWABLES.put(PIECES.get(12), R.drawable.red_07);
+
+		PIECES_DRAWABLES.put(PIECES.get(13), R.drawable.red_06);
+		PIECES_DRAWABLES.put(PIECES.get(14), R.drawable.red_06);
+		PIECES_DRAWABLES.put(PIECES.get(15), R.drawable.red_06);
+		PIECES_DRAWABLES.put(PIECES.get(16), R.drawable.red_06);
+
+		PIECES_DRAWABLES.put(PIECES.get(17), R.drawable.red_05);
+		PIECES_DRAWABLES.put(PIECES.get(18), R.drawable.red_05);
+		PIECES_DRAWABLES.put(PIECES.get(19), R.drawable.red_05);
+		PIECES_DRAWABLES.put(PIECES.get(20), R.drawable.red_05);
+
+		PIECES_DRAWABLES.put(PIECES.get(21), R.drawable.red_04);
+		PIECES_DRAWABLES.put(PIECES.get(22), R.drawable.red_04);
+		PIECES_DRAWABLES.put(PIECES.get(23), R.drawable.red_04);
+		PIECES_DRAWABLES.put(PIECES.get(24), R.drawable.red_04);
+
+		PIECES_DRAWABLES.put(PIECES.get(25), R.drawable.red_03);
+		PIECES_DRAWABLES.put(PIECES.get(26), R.drawable.red_03);
+		PIECES_DRAWABLES.put(PIECES.get(27), R.drawable.red_03);
+		PIECES_DRAWABLES.put(PIECES.get(28), R.drawable.red_03);
+		PIECES_DRAWABLES.put(PIECES.get(29), R.drawable.red_03);
+
+		PIECES_DRAWABLES.put(PIECES.get(30), R.drawable.red_02);
+		PIECES_DRAWABLES.put(PIECES.get(31), R.drawable.red_02);
+		PIECES_DRAWABLES.put(PIECES.get(32), R.drawable.red_02);
+		PIECES_DRAWABLES.put(PIECES.get(33), R.drawable.red_02);
+		PIECES_DRAWABLES.put(PIECES.get(34), R.drawable.red_02);
+		PIECES_DRAWABLES.put(PIECES.get(35), R.drawable.red_02);
+		PIECES_DRAWABLES.put(PIECES.get(36), R.drawable.red_02);
+		PIECES_DRAWABLES.put(PIECES.get(37), R.drawable.red_02);
+
+		PIECES_DRAWABLES.put(PIECES.get(38), R.drawable.red_spy);
+
+		PIECES_DRAWABLES.put(PIECES.get(39), R.drawable.red_flag);
+
+		PIECES_DRAWABLES.put(PIECES.get(40), R.drawable.blue_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(41), R.drawable.blue_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(42), R.drawable.blue_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(43), R.drawable.blue_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(44), R.drawable.blue_bomb);
+		PIECES_DRAWABLES.put(PIECES.get(45), R.drawable.blue_bomb);
+
+		PIECES_DRAWABLES.put(PIECES.get(46), R.drawable.blue_10);
+
+		PIECES_DRAWABLES.put(PIECES.get(47), R.drawable.blue_09);
+
+		PIECES_DRAWABLES.put(PIECES.get(48), R.drawable.blue_08);
+		PIECES_DRAWABLES.put(PIECES.get(49), R.drawable.blue_08);
+
+		PIECES_DRAWABLES.put(PIECES.get(50), R.drawable.blue_07);
+		PIECES_DRAWABLES.put(PIECES.get(51), R.drawable.blue_07);
+		PIECES_DRAWABLES.put(PIECES.get(52), R.drawable.blue_07);
+
+		PIECES_DRAWABLES.put(PIECES.get(53), R.drawable.blue_06);
+		PIECES_DRAWABLES.put(PIECES.get(54), R.drawable.blue_06);
+		PIECES_DRAWABLES.put(PIECES.get(55), R.drawable.blue_06);
+		PIECES_DRAWABLES.put(PIECES.get(56), R.drawable.blue_06);
+
+		PIECES_DRAWABLES.put(PIECES.get(57), R.drawable.blue_05);
+		PIECES_DRAWABLES.put(PIECES.get(58), R.drawable.blue_05);
+		PIECES_DRAWABLES.put(PIECES.get(59), R.drawable.blue_05);
+		PIECES_DRAWABLES.put(PIECES.get(60), R.drawable.blue_05);
+
+		PIECES_DRAWABLES.put(PIECES.get(61), R.drawable.blue_04);
+		PIECES_DRAWABLES.put(PIECES.get(62), R.drawable.blue_04);
+		PIECES_DRAWABLES.put(PIECES.get(63), R.drawable.blue_04);
+		PIECES_DRAWABLES.put(PIECES.get(64), R.drawable.blue_04);
+
+		PIECES_DRAWABLES.put(PIECES.get(65), R.drawable.blue_03);
+		PIECES_DRAWABLES.put(PIECES.get(66), R.drawable.blue_03);
+		PIECES_DRAWABLES.put(PIECES.get(67), R.drawable.blue_03);
+		PIECES_DRAWABLES.put(PIECES.get(68), R.drawable.blue_03);
+		PIECES_DRAWABLES.put(PIECES.get(69), R.drawable.blue_03);
+
+		PIECES_DRAWABLES.put(PIECES.get(70), R.drawable.blue_02);
+		PIECES_DRAWABLES.put(PIECES.get(71), R.drawable.blue_02);
+		PIECES_DRAWABLES.put(PIECES.get(72), R.drawable.blue_02);
+		PIECES_DRAWABLES.put(PIECES.get(73), R.drawable.blue_02);
+		PIECES_DRAWABLES.put(PIECES.get(74), R.drawable.blue_02);
+		PIECES_DRAWABLES.put(PIECES.get(75), R.drawable.blue_02);
+		PIECES_DRAWABLES.put(PIECES.get(76), R.drawable.blue_02);
+		PIECES_DRAWABLES.put(PIECES.get(77), R.drawable.blue_02);
+
+		PIECES_DRAWABLES.put(PIECES.get(78), R.drawable.blue_spy);
+
+		PIECES_DRAWABLES.put(PIECES.get(79), R.drawable.blue_flag);
+	}
+
+	/**
+	 * Update all visual components.
+	 */
+	private void updateViews() {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		Cell[][] cells = board.cells();
+
+		for (int x = 0; x < cells.length && x < cellView.length; x++) {
+			for (int y = 0; y < cells[x].length && y < cellView[x].length; y++) {
+				cellView[x][y].setImageResource(EMPTY_FIELD_DRAWABLES[x][y]);
+
+				/* If the cell is empty use the background image only. */
+				if (board.isEmpty(x, y) == true) {
+					continue;
+				}
+
+				/* Draw nothing for null pointers. */
+				Piece piece = cells[x][y].piece();
+				if (piece == null) {
+					continue;
+				}
+
+				/* Draw piece. */
+				Drawable[] layers = {getResources().getDrawable(EMPTY_FIELD_DRAWABLES[x][y]), getResources().getDrawable(PIECES_DRAWABLES.get(piece))};
+				cellView[x][y].setImageDrawable(new LayerDrawable(layers));
+			}
+		}
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_board);
 
 		/* Obtain cells image references. */
-		cells = new ImageView[][]{
+		cellView = new ImageView[][]{
 						{(ImageView) findViewById(R.id.cell00), (ImageView) findViewById(R.id.cell10), (ImageView) findViewById(R.id.cell20), (ImageView) findViewById(R.id.cell30), (ImageView) findViewById(R.id.cell40), (ImageView) findViewById(R.id.cell50), (ImageView) findViewById(R.id.cell60), (ImageView) findViewById(R.id.cell70), (ImageView) findViewById(R.id.cell80), (ImageView) findViewById(R.id.cell90),},
 						{(ImageView) findViewById(R.id.cell01), (ImageView) findViewById(R.id.cell11), (ImageView) findViewById(R.id.cell21), (ImageView) findViewById(R.id.cell31), (ImageView) findViewById(R.id.cell41), (ImageView) findViewById(R.id.cell51), (ImageView) findViewById(R.id.cell61), (ImageView) findViewById(R.id.cell71), (ImageView) findViewById(R.id.cell81), (ImageView) findViewById(R.id.cell91),},
 						{(ImageView) findViewById(R.id.cell02), (ImageView) findViewById(R.id.cell12), (ImageView) findViewById(R.id.cell22), (ImageView) findViewById(R.id.cell32), (ImageView) findViewById(R.id.cell42), (ImageView) findViewById(R.id.cell52), (ImageView) findViewById(R.id.cell62), (ImageView) findViewById(R.id.cell72), (ImageView) findViewById(R.id.cell82), (ImageView) findViewById(R.id.cell92),},
@@ -99,10 +253,13 @@ public class BoardActivity extends Activity {
 		};
 
 		/* Attach of the cells click listener object. */
-		for (int i = 0; i < cells.length; i++) {
-			for (int j = 0; j < cells[i].length; j++) {
-				cells[i][j].setOnClickListener(onCellClick);
+		for (int i = 0; i < cellView.length; i++) {
+			for (int j = 0; j < cellView[i].length; j++) {
+				cellView[i][j].setOnClickListener(onCellClick);
 			}
 		}
+
+		/* Initial draw of GUI. */
+		updateViews();
 	}
 }

@@ -7,7 +7,7 @@ package com.gmail.boianaradkova.stratego.model;
  *
  * @author Boyana Kantarska
  */
-final class Piece {
+public final class Piece {
 	/**
 	 * Each piece has rank as property.
 	 */

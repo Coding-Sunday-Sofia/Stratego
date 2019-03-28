@@ -5,7 +5,7 @@ package com.gmail.boianaradkova.stratego.model;
  *
  * @author Boyana Kantarska
  */
-final class Cell {
+public final class Cell {
 	/**
 	 * What kind of cell.
 	 */

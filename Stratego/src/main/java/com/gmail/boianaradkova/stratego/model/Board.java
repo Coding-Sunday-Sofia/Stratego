@@ -1,6 +1,7 @@
 package com.gmail.boianaradkova.stratego.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,11 +20,6 @@ public final class Board {
 	}
 
 	/**
-	 * All pieces available on the board are stored as Java objects in a single collection.
-	 */
-	private static final List<Piece> PIECES = new ArrayList<>();
-
-	/**
 	 * Just a reference ot the real object.
 	 */
 	private static final Piece BLUE_FLAG;
@@ -32,6 +28,11 @@ public final class Board {
 	 * Just a reference ot the real object.
 	 */
 	private static final Piece RED_FLAG;
+
+	/**
+	 * All pieces available on the board are stored as Java objects in a single collection.
+	 */
+	public static final List<Piece> PIECES = new ArrayList<>();
 
 	/**
 	 * Keep track of the board state.

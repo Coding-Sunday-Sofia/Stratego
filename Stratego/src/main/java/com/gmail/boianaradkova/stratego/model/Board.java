@@ -1,7 +1,6 @@
 package com.gmail.boianaradkova.stratego.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -55,6 +54,21 @@ public final class Board {
 					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
 					{new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.BLUE), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.NEUTRAL), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED), new Cell(Cell.Territory.RED),},
 	};
+
+	/**
+	 * When there is a move with two or more steps coordinates should be kept.
+	 */
+	private int selectedX = -1;
+
+	/**
+	 * When there is a move with two or more steps coordinates should be kept.
+	 */
+	private int selectedY = -1;
+
+	/**
+	 * When there is a move with two or more steps this flag indicates the selection step.
+	 */
+	private boolean hasSelectedCell = false;
 
 	/**
 	 * Each player moves one piece per turn.
@@ -169,6 +183,26 @@ public final class Board {
 	 */
 	public State state() {
 		return state;
+	}
+
+	/**
+	 * Has selected cell getter.
+	 *
+	 * @param hasSelectedCell True if there is a selected cell, false otherwise.
+	 */
+	public void hasSelectedCell(boolean hasSelectedCell) {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		this.hasSelectedCell = hasSelectedCell;
+	}
+
+	/**
+	 * Has selected cell getter.
+	 *
+	 * @return True if there is a selected cell, false otherwise.
+	 */
+	public boolean hasSelectedCell() {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		return hasSelectedCell;
 	}
 
 	/**
@@ -347,6 +381,23 @@ public final class Board {
 	}
 
 	/**
+	 * Find available piece according to string representation.
+	 *
+	 * @param value String representation.
+	 * @return Piece reference if it is found or null pointer otherwise.
+	 */
+	public Piece findAvailablePiece(String value) {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		for (Piece piece : unused()) {
+			if (piece.toString().equals(value) == true) {
+				return piece;
+			}
+		}
+
+		return null;
+	}
+
+	/**
 	 * Check for game over conditions.
 	 *
 	 * @return True if the game is over, false otherwise.
@@ -408,6 +459,28 @@ public final class Board {
 		/* Place piece on the board. */
 		cells[x][y].piece(piece);
 		return true;
+	}
+
+	/**
+	 * Place piece over the board.
+	 *
+	 * @param piece Piece reference for deployment.
+	 * @return True if the placement is successful, false otherwise.
+	 * @throws RuntimeException Invalid placement.
+	 */
+	public boolean place(Piece piece) throws RuntimeException {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		if (piece == null) {
+			throw new RuntimeException("Invalid piece!");
+		}
+
+		if (hasSelectedCell == false) {
+			return false;
+		}
+
+		/* When the piece is placed selection is canceled. */
+		hasSelectedCell = false;
+		return place(piece, selectedX, selectedY);
 	}
 
 	/**
@@ -486,12 +559,25 @@ public final class Board {
 			throw new RuntimeException("Invalid coordinates!");
 		}
 
-		if (true) throw new RuntimeException("Unit test needed!");
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
 
 		switch (state) {
 			case SETUP:
+				if (hasSelectedCell == false) {
+					if (isEmpty(x, y) == false) {
+						remove(x, y);
+						hasSelectedCell = false;
+						return true;
+					} else {
+						selectedX = x;
+						selectedY = y;
+						hasSelectedCell = true;
+						return true;
+					}
+				}
 				break;
 			case PLAY:
+				//TODO
 				break;
 		}
 

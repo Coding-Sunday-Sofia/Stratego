@@ -242,4 +242,13 @@ public final class Piece {
 	public Rank rank() {
 		return rank;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		return "" + rank().letter() + color().letter();
+	}
 }

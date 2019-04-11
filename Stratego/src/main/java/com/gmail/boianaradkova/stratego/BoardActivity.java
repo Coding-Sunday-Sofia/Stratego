@@ -1,17 +1,20 @@
 package com.gmail.boianaradkova.stratego;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.gmail.boianaradkova.stratego.model.Board;
 import com.gmail.boianaradkova.stratego.model.Cell;
 import com.gmail.boianaradkova.stratego.model.Piece;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +48,16 @@ public class BoardActivity extends Activity {
 	private static final Map<Piece, Integer> PIECES_DRAWABLES = new HashMap<>();
 
 	/**
+	 * Pick piece request code.
+	 */
+	static final int PICK_PIECE_REQUEST = 1;
+
+	/**
+	 * Pieces key for the intent extra.
+	 */
+	static final String PIECES_KEY = "pieces";
+
+	/**
 	 * Keep references to image view controls.
 	 */
 	private ImageView cellView[][] = null;
@@ -70,13 +83,10 @@ public class BoardActivity extends Activity {
 						continue;
 					}
 
-					//Toast.makeText(BoardActivity.this, "Cell"+i+""+j,	Toast.LENGTH_SHORT).show();
+					Toast.makeText(BoardActivity.this, "Cell" + i + "" + j, Toast.LENGTH_SHORT).show();
 
-					if (board.state() == Board.State.SETUP) {
+					if (board.click(i, j) == true) {
 						lastClicked = new Point(i, j);
-						//TODO Show list with the available pieces.
-					} else {
-						board.click(i, j);
 					}
 
 					break loops;
@@ -227,6 +237,21 @@ public class BoardActivity extends Activity {
 				cellView[x][y].setImageDrawable(new LayerDrawable(layers));
 			}
 		}
+
+		/* Call dialog with the available pieces. */
+		if (board.state() == Board.State.SETUP && board.hasSelectedCell() == true) {
+			Intent intent = new Intent(this, PiecesActivity.class);
+
+			/* Transform all pieces into text information. */
+			ArrayList<String> values = new ArrayList<>();
+			for (Piece piece : board.unused()) {
+				values.add(piece.toString());
+			}
+
+			/* Call another activity. */
+			intent.putExtra(PIECES_KEY, values);
+			startActivityForResult(intent, PICK_PIECE_REQUEST);
+		}
 	}
 
 	/**
@@ -259,7 +284,33 @@ public class BoardActivity extends Activity {
 			}
 		}
 
+		//TODO Use menu items for different game situations.
+		board.state(Board.State.SETUP);
+
 		/* Initial draw of GUI. */
+		updateViews();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onActivityResult(int request, int result, Intent data) {
+		//TODO if (true) throw new RuntimeException("Unit test needed!");
+		if (request == PICK_PIECE_REQUEST) {
+			if (result == Activity.RESULT_OK) {
+				String value = data.getStringExtra(PiecesActivity.SELECTED_KEY);
+				Piece piece = board.findAvailablePiece(value);
+				if (board.place(piece) == false) {
+					board.hasSelectedCell(false);
+				}
+			}
+
+			if (result == Activity.RESULT_CANCELED) {
+				board.hasSelectedCell(false);
+			}
+		}
+
 		updateViews();
 	}
 }
